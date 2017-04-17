@@ -15,7 +15,7 @@ function chk_array ( $array, $key ) {
 		// Retorna o valor da chave
 		return $array[ $key ];
 	}
-	
+
 	// Retorna nulo por padrão
 	return null;
 } // chk_array
@@ -29,12 +29,34 @@ function chk_array ( $array, $key ) {
  */
 function __autoload($class_name) {
 	$file = ABSPATH . '/classes/class-' . $class_name . '.php';
-	
+
 	if ( ! file_exists( $file ) ) {
 		require_once ABSPATH . '/includes/404.php';
 		return;
 	}
-	
+
 	// Inclui o arquivo da classe
     require_once $file;
 } // __autoload
+
+
+
+if (BUILTINWEBSERVER) {
+
+    if (preg_match('/\.(?:png|jpg|jpeg|gif)$/', $_SERVER["REQUEST_URI"])) {
+        return false;
+    } else {
+        $path = $_SERVER["REQUEST_URI"];
+
+        if ($path[0] == "/") {
+            $path = substr($path, 1);
+        }
+        $_GET['path'] = $path;
+
+        if (strlen($path) == 0) {
+            unset($_GET['path']);
+        }
+
+        include ABSPATH . '/index.php';
+    }
+}

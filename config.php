@@ -7,10 +7,10 @@
 define( 'ABSPATH', dirname( __FILE__ ) );
 
 // Caminho para a pasta de uploads
-define( 'UP_ABSPATH', ABSPATH . '/views/_uploads' );
+define( 'UP_ABSPATH', ABSPATH . '\views\_uploads' );
 
 // URL da home
-define( 'HOME_URI', 'http://127.0.0.1/Cursos/crud' );
+define( 'HOME_URI', 'http://localhost:52611' );
 
 // Nome do host da base de dados
 define( 'HOSTNAME', 'localhost' );
@@ -22,13 +22,15 @@ define( 'DB_NAME', 'tutsup' );
 define( 'DB_USER', 'root' );
 
 // Senha do DB
-define( 'DB_PASSWORD', '' );
+define( 'DB_PASSWORD', 'root' );
 
 // Charset da conexão PDO
 define( 'DB_CHARSET', 'utf8' );
 
 // Se você estiver desenvolvendo, modifique o valor para true
 define( 'DEBUG', true );
+
+define ('BUILTINWEBSERVER', true);
 
 /**
  * Não edite daqui em diante
